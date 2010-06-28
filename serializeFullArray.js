@@ -8,40 +8,40 @@ jQuery.fn.serializeFullArray = function () {
 		if(!set.hasOwnProperty(field)) continue;
 
 		// Split up the field names into array tiers
-	    var parts = set[field].name
-	    	.split(/\]|\[/)
-	    	.filter(function(part) {
-		    	return !(part == '');
+		var parts = set[field].name
+			.split(/\]|\[/)
+			.filter(function(part) {
+				return !(part == '');
 		   	});
 
 		// Start ref out at the root of the output object
-	    var ref = output;
+		var ref = output;
 
-	    for (var segment in parts)
-	    {
+		for (var segment in parts)
+		{
 			if(!parts.hasOwnProperty(segment)) continue;
 
 			// set key for ease of use.
-	        var key = parts[segment];
-	        var value = {};
+			var key = parts[segment];
+			var value = {};
 
-	        // If we're at the last part, the value comes from the original array.
-	        if (segment == parts.length - 1)
-	        {
-	            var value = set[field].value;
-	        }
+			// If we're at the last part, the value comes from the original array.
+			if (segment == parts.length - 1)
+			{
+				var value = set[field].value;
+			}
 
-	        // Create a throwaway object to merge into output.
-	        var objNew = {};
-	        objNew[key] = value;
+			// Create a throwaway object to merge into output.
+			var objNew = {};
+			objNew[key] = value;
 
-	        // Extend output with our temp object at the depth specified by ref.
-	        $.extend(true, ref, objNew);
+			// Extend output with our temp object at the depth specified by ref.
+			$.extend(true, ref, objNew);
 
-	        // Reassign ref to point to this tier, so the next loop can extend it.
-	        ref = ref[key];
-	    }
+			// Reassign ref to point to this tier, so the next loop can extend it.
+			ref = ref[key];
+		}
 	}
 
-    return output;
+	return output;
 }
