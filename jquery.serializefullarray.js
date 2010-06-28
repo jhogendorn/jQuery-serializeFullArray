@@ -1,7 +1,7 @@
 /*!
  * jQuery serializeFullArray - v0.1 - 28/06/2010
  * http://github.com/jhogendorn/jQuery-serializeFullArray/
- * 
+ *
  * Copyright (c) 2010 Joshua Hogendorn
  *
  *
@@ -9,11 +9,11 @@
  * builds it into a n-tier object, respecting form input arrays.
  *
  */
- 
+
 (function($,undefined){
   '$:nomunge'; // Used by YUI compressor.
-  
-	$.fn.serializeFullArray = function () {
+
+	jQuery.fn.serializeFullArray = function () {
 		// Grab a set of name:value pairs from the form dom.
 		var set = $(this).serializeArray();
 		var output = {};
@@ -59,5 +59,5 @@
 		}
 
 		return output;
-	}
+	};
 })(jQuery);
