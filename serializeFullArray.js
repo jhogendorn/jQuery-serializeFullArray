@@ -3,29 +3,25 @@ jQuery.fn.serializeFullArray = function () {
 	var output = {};
 	for (field in set)
 	{
-	    var parts = set[field].name.split(/\]|\[/).filter(function(part) {
-	        if (part == '')
-	        {
-	            return false;
-	        }
-	        return true;
-	    });
+	    var parts = set[field].name
+	    	.split(/\]|\[/)
+	    	.filter(function(part) {
+		    	return !(part == '');
+		   	});
 
 	    var ref = output;
 
-	    for (segment in parts)
+	    for (var segment in parts)
 	    {
 	        var key = parts[segment];
+	        var value = {};
 
 	        if (key == parts[parts.length - 1])
 	        {
 	            var value = set[field].value;
 	        }
-	        else
-	        {
-	            var value = {};
-	        }
-	        var objNew = new Object();
+
+	        var objNew = {};
 	        objNew[key] = value;
 
 	        $.extend(true, ref, objNew);
