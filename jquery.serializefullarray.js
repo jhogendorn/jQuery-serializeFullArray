@@ -24,16 +24,14 @@
 
 			// Split up the field names into array tiers
 			var parts = set[field].name
-				.split(/\]|\[/)
-				.filter(function(part) {
-					return !(part == '');
-				});
+				.split(/\]|\[/);
 
 			// Start ref out at the root of the output object
 			var ref = output;
 
 			for (var segment in parts)
 			{
+				if(parts[segment] == '') continue;
 				if(!parts.hasOwnProperty(segment)) continue;
 
 				// set key for ease of use.
