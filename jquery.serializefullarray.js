@@ -41,7 +41,7 @@
 				var value = {};
 
 				// If we're at the last part, the value comes from the original array.
-				if (segment == parts.length - 1)
+				if (segment == parts.length - 2)
 				{
 					var value = set[field].value;
 				}
